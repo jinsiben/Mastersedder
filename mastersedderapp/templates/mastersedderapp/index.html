@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% load staticfiles %}
+<html>
+<link rel="stylesheet" type="text/css" href="{% static 'mastersedderapp/style.css' %}">
+  <head> <!-- ← 追加 -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" /> <!-- ← 追加 -->
+  </head> <!-- ← 追加 -->
+<body>
+
+{% block contents %}
+
+<h1>MasterSedder</h1>
+
+
+
+{% if latest_question_list %}
+<div class="table-responsive">
+<table  class="table table-hover">
+    <tr>
+      <th>ID</th>
+      <th>質問内容</th>
+      <th>登録日時</th>
+    </tr>
+
+    {% for question in latest_question_list %}
+    <tr>
+	<td>{{ question.id }}</td>
+        <td><a href="{% url 'mastersedderapp:detail' question.id %}">{{ question.question_text }}</a></td>
+	<td>{{ question.pub_date }}</td>
+    {% endfor %}
+    </tr>
+</table>
+</div>
+{% else %}
+    <p>No MSs are available.</p>
+{% endif %}
+
+{% endblock contents %}
+
+</body>
+
+</html>
