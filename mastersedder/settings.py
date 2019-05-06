@@ -125,7 +125,7 @@ STATICFILES_DIRS = (
 
 
 
-# Security
+# Test
 try:
 	from .local_settings import *
 except ImportError:
@@ -133,11 +133,9 @@ except ImportError:
 
 
 
-
-
-
-
-
+if not DEBUG:
+	import django_heroku
+	django_heroku.settings(locals())
 
 
 
