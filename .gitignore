@@ -10,3 +10,5 @@ env
 db.sqlite3
 
 
+.vscode/.ropeproject/config.py
+.vscode/.ropeproject/objectdb
