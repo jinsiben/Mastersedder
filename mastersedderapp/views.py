@@ -1,9 +1,9 @@
 from django.http import Http404
-from django.shortcuts import get_object_or_404,render
+from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 
 # Create your views here.
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 from django.views import generic
@@ -51,8 +51,8 @@ def vote(request, question_id):
 	except (KeyError, Choice.DoesNotExist):
 		# Redisplay the question voting form.
 		return render(request, 'mastersedderapp/detail.html', {
-		'question': question,
-		'error_message': "You didn't select a choice.",
+			'question': question,
+			'error_message': "You didn't select a choice.",
 		})
 	else:
 		selected_choice.votes += 1
@@ -61,5 +61,3 @@ def vote(request, question_id):
 		# with POST data. This prevents data from being posted twice if a
 		# user hits the Back button.
 	return HttpResponseRedirect(reverse('mastersedderapp:results', args=(question.id,)))
-
-
